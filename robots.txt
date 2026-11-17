@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://winros-web.github.io/Katalog-Svarna/sitemap.xml
