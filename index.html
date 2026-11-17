@@ -24,7 +24,7 @@
 {"@context":"https://schema.org","@type":"Organization",
  "name":"PT Svarna Dipa","url":"https://www.svarnadipa.net/","logo":"https://www.svarnadipa.net/logo.png",
  "description":"Distributor elektronik rumah tangga di Indonesia.",
- "telephone":"+62-21-50106480",
+ "telephone":"+6285196533008",
  "address":{"@type":"PostalAddress",
    "streetAddress":"Komplek Rukan Malibu City Resort Blok I No. 11, Cengkareng Timur, Cengkareng",
    "addressLocality":"Jakarta Barat","addressRegion":"DKI Jakarta",
@@ -615,8 +615,9 @@ footer .wrap{display:grid;gap:5px}
       <div><span class="k">Kantor</span>
         <p>PT Svarna Dipa<br>Komplek Rukan Malibu City Resort Blok I No. 11<br>
            Cengkareng Timur, Cengkareng, Jakarta Barat, DKI Jakarta 11730</p></div>
-      <div><span class="k">Telepon</span>
-        <p id="tel">021 50106480</p>
+      <div><span class="k">WhatsApp</span>
+        <p id="tel">0851-9653-3008</p>
+        <a class="cp" href="https://wa.me/6285196533008" target="_blank" rel="noopener">Chat sekarang</a>
         <button class="cp" id="cpBtn" type="button">Salin nomor</button></div>
       <div><span class="k">Cabang</span>
         <p>Jakarta &middot; Medan &middot; Palembang &middot; Bandung &middot; Lampung &middot;
@@ -968,7 +969,7 @@ var PRODUK = [{"b":"AQUA","k":"AC","i":"ac","kode":"AQACR5VRAL","nama":"AC AQACR
   gambarGrid();
 
   /* ---- keranjang & pemesanan ---------------------------------------- */
-  var WA = '';                       /* nomor WhatsApp pemesanan, format 62xxxx */
+  var WA = '6285196533008';                       /* nomor WhatsApp pemesanan, format 62xxxx */
   var KUNCI = 'svarna_keranjang_v1';
   var KRJ = {};
   try { KRJ = JSON.parse(localStorage.getItem(KUNCI) || '{}') || {}; } catch(e){ KRJ = {}; }
@@ -1151,7 +1152,7 @@ var PRODUK = [{"b":"AQUA","k":"AC","i":"ac","kode":"AQACR5VRAL","nama":"AC AQACR
     p2.textContent = WA
       ? 'Tekan tombol di bawah untuk mengirim pesanan ini ke WhatsApp tim penjualan. ' +
         'Pesanan belum tercatat sampai terkirim.'
-      : 'Salin pesanan di bawah, lalu kirimkan ke tim penjualan di 021 50106480 ' +
+      : 'Salin pesanan di bawah, lalu kirimkan ke tim penjualan di 0851-9653-3008 ' +
         'atau lewat WhatsApp toko Anda. Pesanan belum tercatat sampai dikirim.';
     var pre = document.createElement('pre');
     pre.id = 'pesanTeks';
