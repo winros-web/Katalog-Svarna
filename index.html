@@ -443,7 +443,8 @@ footer .wrap{display:grid;gap:5px}
       <a href="#produk">Produk</a>
       <a href="#jangkauan">Cabang</a>
       <a href="#kontak">Kontak</a>
-      <button type="button" class="krj-btn" id="krjBtn" aria-label="Buka keranjang">
+      <a class="krj-btn" id="waBtn" href="https://wa.me/6285196533008?text=Halo%20Svarna%20Dipa%2C%20saya%20mau%20tanya%20produknya." target="_blank" rel="noopener" aria-label="Pesan lewat WhatsApp">WhatsApp</a>
+      <button type="button" class="krj-btn" id="krjBtn" aria-label="Buka keranjang" style="display:none">
         Keranjang <b id="krjJml" hidden>0</b></button>
     </nav>
   </div>
@@ -560,7 +561,7 @@ footer .wrap{display:grid;gap:5px}
   <div class="wrap">
     <span class="eyebrow">Produk</span>
     <h2>Katalog per merek.</h2>
-    <p class="lede">Pilih merek lalu kategorinya, lalu masukkan ke keranjang untuk
+    <p class="lede">Pilih merek lalu kategorinya, lalu klik Pesan via WhatsApp untuk
       meminta penawaran. Harga kami kirim setelah jumlah dan wilayah kirim diketahui.</p>
     <div class="filters">
       <div class="chips brand" id="fBrand" role="group" aria-label="Pilih merek"></div>
@@ -655,7 +656,7 @@ footer .wrap{display:grid;gap:5px}
       <h3 id="lbNama"></h3>
       <span class="kode" id="lbKode"></span>
       <span class="hrg" id="lbHrg"></span>
-      <button type="button" class="tbh lb-tbh" id="lbTbh">+ Keranjang</button>
+      <button type="button" class="tbh lb-tbh" id="lbTbh">Pesan via WhatsApp</button>
       <table class="lb-spek" id="lbSpek"></table>
       <p class="lb-sum" id="lbSum"></p>
     </div>
@@ -848,13 +849,9 @@ var PRODUK = [{"nama":"AC AQACR5VRAL","k":"AC","i":"ac","kode":"AQACR5VRAL","b":
         tbl.addEventListener('click', function(){ bukaLb(p); });
       }
       var tb = document.createElement('button');
-      tb.type = 'button'; tb.className = 'tbh'; tb.textContent = '+ Keranjang';
-      tb.setAttribute('aria-label', 'Tambahkan ' + p.nama + ' ke keranjang');
-      tb.addEventListener('click', function(){
-        tambah(p.kode, 1);
-        tb.textContent = 'Masuk keranjang'; tb.classList.add('ok');
-        setTimeout(function(){ tb.textContent = '+ Keranjang'; tb.classList.remove('ok'); }, 1300);
-      });
+      tb.type = 'button'; tb.className = 'tbh'; tb.textContent = 'Pesan via WhatsApp';
+      tb.setAttribute('aria-label', 'Pesan ' + p.nama + ' lewat WhatsApp');
+      tb.addEventListener('click', function(){ pesanWA(p); });
       c.querySelector('.isi').appendChild(tb);
       var sp = c.querySelector('.spek');
       (p.s || []).slice(0, 3).forEach(function(r){
@@ -936,11 +933,7 @@ var PRODUK = [{"nama":"AC AQACR5VRAL","k":"AC","i":"ac","kode":"AQACR5VRAL","b":
     });
     t.hidden = !(p.s && p.s.length);
     var lt = document.getElementById('lbTbh');
-    lt.onclick = function(){
-      tambah(p.kode, 1);
-      lt.textContent = 'Masuk keranjang'; lt.classList.add('ok');
-      setTimeout(function(){ lt.textContent = '+ Keranjang'; lt.classList.remove('ok'); }, 1300);
-    };
+    lt.onclick = function(){ pesanWA(p); };
     var sum = document.getElementById('lbSum');
     sum.textContent = p.src ? 'Foto dan spesifikasi: ' + p.src + '.' : '';
     sum.hidden = !p.src;
@@ -971,6 +964,11 @@ var PRODUK = [{"nama":"AC AQACR5VRAL","k":"AC","i":"ac","kode":"AQACR5VRAL","b":
   gambarGrid();
 
   /* ---- keranjang & pemesanan ---------------------------------------- */
+  /* 18 Nov 2026: klik pesan -> langsung WhatsApp dengan nama & kode barang (tanpa keranjang) */
+  function pesanWA(p){
+    var t = 'Halo Svarna Dipa, saya mau pesan ' + (p.b ? p.b + ' ' : '') + p.nama + ' (' + p.kode + '). Mohon info harga dan ketersediaannya.';
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(t), '_blank', 'noopener');
+  }
   var WA = '6285196533008';                       /* nomor WhatsApp pemesanan, format 62xxxx */
   var KUNCI = 'svarna_keranjang_v1';
   var KRJ = {};
